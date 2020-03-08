@@ -13,12 +13,20 @@ import java.io.IOException;
 
 @Configuration
 public class BeanRepository {
+    private GitHubClient mGitHubClient;
     private IssueService mIssueService;
     private Config mConfig;
 
     BeanRepository() throws IOException {
         Yaml yaml = new Yaml(new Constructor(Config.class));
         mConfig = yaml.load(new ClassPathResource("config.yml").getInputStream());
+
+        System.out.println(mConfig.getUser().getOauth());
+
+        mGitHubClient = new GitHubClient();
+        mGitHubClient.setOAuth2Token(
+                mConfig.getUser().getOauth()
+        );
 
         mIssueService = new IssueService();
         mIssueService.getClient().setOAuth2Token(

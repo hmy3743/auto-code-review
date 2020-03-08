@@ -109,3 +109,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 .idea
 HELP.md
+
+src/main/resources/config.yml

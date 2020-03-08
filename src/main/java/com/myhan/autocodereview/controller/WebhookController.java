@@ -35,7 +35,6 @@ public class WebhookController {
         GithubWebHook.PullRequest.Head.Repo repo = body.getPull_request().getHead().getRepo();
 
         RepositoryId repoId = new RepositoryId(repo.getOwner().getLogin(), repo.getName());
-        System.out.println(repoId.toString());
         mIssueService.createComment(repoId, body.getNumber(), "LGTM");
     }
 }
