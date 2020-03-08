@@ -18,19 +18,16 @@ public class BeanRepository {
     private Config mConfig;
 
     BeanRepository() throws IOException {
-        Yaml yaml = new Yaml(new Constructor(Config.class));
-        mConfig = yaml.load(new ClassPathResource("config.yml").getInputStream());
-
-        System.out.println(mConfig.getUser().getOauth());
+        String OAuth = System.getenv("github-oauth");
 
         mGitHubClient = new GitHubClient();
         mGitHubClient.setOAuth2Token(
-                mConfig.getUser().getOauth()
+                OAuth
         );
 
         mIssueService = new IssueService();
         mIssueService.getClient().setOAuth2Token(
-                mConfig.getUser().getOauth()
+                OAuth
         );
     }
 
