@@ -18,6 +18,14 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'com.h2database:h2'
+	implementation 'org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok'
+
+	implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
 }
 
 test {
