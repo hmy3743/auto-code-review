@@ -2,12 +2,9 @@ package com.myhan.autocodereview;
 
 import com.myhan.autocodereview.model.Config;
 import org.eclipse.egit.github.core.client.GitHubClient;
-import org.eclipse.egit.github.core.service.*;
+import org.eclipse.egit.github.core.service.IssueService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.IOException;
 
@@ -18,9 +15,15 @@ public class BeanRepository {
     private Config mConfig;
 
     BeanRepository() throws IOException {
-        String OAuth = System.getenv("github-oauth");
+        String OAuth = System.getenv("github_oauth");
+        System.out.println(OAuth);
+        String hostname = System.getenv("github_host_url");
 
-        mGitHubClient = new GitHubClient();
+        if(hostname == null)
+            mGitHubClient = new GitHubClient();
+        else
+            mGitHubClient = new GitHubClient(hostname);
+
         mGitHubClient.setOAuth2Token(
                 OAuth
         );
