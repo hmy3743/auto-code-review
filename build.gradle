@@ -26,6 +26,9 @@ dependencies {
 	implementation 'org.projectlombok:lombok'
 
 	implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//	implementation 'org.projectreactor:reactor-spring'
 }
 
 test {

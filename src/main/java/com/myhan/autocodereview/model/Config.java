@@ -4,10 +4,7 @@ import lombok.Data;
 
 @Data
 public class Config {
-    private User user;
-
-    @Data
-    public static class User {
-        private String oauth;
-    }
+    private String oauth;
+    private String hostname;
+    private String organization;
 }
