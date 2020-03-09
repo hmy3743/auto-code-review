@@ -50,7 +50,7 @@ public class PullRequestCheckService {
     }
 
 
-    @Scheduled(cron = "0/30 * * * * *")
+    @Scheduled(cron = "0 0/5 * * * *")
     public void Check() throws IOException {
         int selfId = mUserService.getUser().getId();
 
